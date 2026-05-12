@@ -562,11 +562,63 @@ function showSummary(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function submitForm(){
-  const wa = data.q9_wa || '';
-  const msg = encodeURIComponent('Hola! Acabo de completar el onboarding de MexAI. ¿Cuándo podemos hablar?');
-  const phone = '528120000000';
-  alert('✅ ¡Listo, Hector! El equipo de MexAI te contactará en menos de 48 horas. Mientras tanto, revisa tu WhatsApp.');
+async function submitForm(){
+  const btn = document.querySelector('.btn-final');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  const labels = {
+    q1_bio:'Descripción personal',chips_anos:'Años de experiencia',chips_equipo:'Equipo',chips_marca:'Situación de marca',q1_marca:'Nombre de marca',
+    q2_main:'Servicio principal',chips_servicios:'Otros servicios',chips_precio:'Precio promedio por persona',
+    q3_diff:'Diferenciador',chips_resultado:'Resultado para clientes',
+    r_expediciones:'Expediciones por mes',r_personas:'Personas por evento',chips_canal:'Canal principal de ventas',chips_dms:'DMs por semana',
+    chips_info:'Cómo comparte información',chips_cobro:'Cómo cobra',chips_tiempo:'Tiempo en administración/semana',
+    chips_ingresos:'Meta de ingresos',chips_metas:'Metas principales',
+    chips_obstaculos:'Obstáculo principal',q7_obstaculos:'Detalle del obstáculo',
+    chips_digital:'Presencia digital',chips_seguidores:'Seguidores en Instagram',chips_testimonios:'Testimonios',
+    chips_urgencia:'Urgencia',q9_extra:'Notas adicionales',q9_wa:'WhatsApp'
+  };
+
+  for(let s = 1; s <= 9; s++){
+    const el = document.getElementById('step-'+s);
+    if(!el) continue;
+    el.querySelectorAll('input[type=text], textarea').forEach(i=>{ if(i.id && i.value) data[i.id]=i.value; });
+    el.querySelectorAll('.chips').forEach(g=>{
+      if(!g.id) return;
+      const sel = [...g.querySelectorAll('.chip.selected')].map(c=>c.dataset.val);
+      if(sel.length) data[g.id] = sel.join(', ');
+    });
+    el.querySelectorAll('input[type=range]').forEach(r=>{ if(r.id) data[r.id]=r.value; });
+  }
+
+  const payload = { _subject: '🏔 Nuevo onboarding completado — MexAI' };
+  Object.entries(data).forEach(([k, v]) => {
+    if(v) payload[labels[k] || k] = v;
+  });
+
+  console.log('Payload:', JSON.stringify(payload, null, 2));
+  if(Object.keys(payload).length <= 1) payload['Nota'] = 'Sin datos';
+
+  try {
+    const res = await fetch('https://formspree.io/f/xwvyyynv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+    console.log('Formspree:', json);
+    if(res.ok && json.ok){
+      btn.textContent = '✅ ¡Enviado!';
+      document.querySelector('.final-sub').innerHTML = 'Tu información llegó al equipo de MexAI.<br>Te contactamos en menos de 48 horas vía WhatsApp.';
+    } else {
+      throw new Error(JSON.stringify(json));
+    }
+  } catch(e){
+    console.error('Error:', e);
+    btn.textContent = 'Enviar y recibir mi plan →';
+    btn.disabled = false;
+    alert('Error: ' + e.message);
+  }
 }
 
 // Chips — multi-select
