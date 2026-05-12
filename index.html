@@ -19,7 +19,7 @@
   
   /* HEADER */
   .header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
-  .logo-img{height:46px;filter:brightness(1.1);}
+  .logo-img{height:32px;filter:brightness(1.1);}
   .progress-wrap{display:flex;align-items:center;gap:10px;}
   .progress-text{font-size:13px;color:var(--muted);font-family:'Syne',sans-serif;}
   .progress-bar{width:180px;height:3px;background:var(--border2);border-radius:2px;overflow:hidden;}
@@ -148,16 +148,6 @@
           <div class="chip" data-val="Con 1-2 personas">Con 1-2 personas</div>
           <div class="chip" data-val="Equipo de 3+">Equipo de 3+</div>
         </div>
-      </div>
-      <div class="input-group">
-        <label>¿Tienes nombre de marca o usas tu nombre personal? <span style="color:var(--blue);font-size:12px;">(importante para tu sistema)</span></label>
-        <div class="chips" id="chips_marca">
-          <div class="chip" data-val="Solo uso mi nombre personal (@halvarado)">Solo nombre personal</div>
-          <div class="chip" data-val="Tengo nombre de marca definido">Tengo marca definida</div>
-          <div class="chip" data-val="Estoy en proceso de definirlo">En proceso</div>
-          <div class="chip" data-val="No lo he pensado">No lo he pensado</div>
-        </div>
-        <input type="text" id="q1_marca" placeholder="Si tienes marca, ¿cuál es? (opcional)" style="margin-top:10px;">
       </div>
     </div>
     <div class="nav"><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
@@ -534,7 +524,7 @@ function showSummary(){
   updateProgress();
 
   const blocks = [
-    {title:'Identidad', keys:['q1_bio','chips_anos','chips_equipo','chips_marca','q1_marca']},
+    {title:'Identidad', keys:['q1_bio','chips_anos','chips_equipo']},
     {title:'Qué vendes', keys:['q2_main','chips_servicios','chips_precio']},
     {title:'Diferenciador', keys:['q3_diff','chips_resultado']},
     {title:'Números', keys:['r_expediciones','r_personas','chips_canal','chips_dms']},
@@ -546,7 +536,7 @@ function showSummary(){
   ];
 
   const labels = {
-    q1_bio:'Descripción',chips_anos:'Años de experiencia',chips_equipo:'Equipo',chips_marca:'Marca/Branding',q1_marca:'Nombre de marca',
+    q1_bio:'Descripción',chips_anos:'Años de experiencia',chips_equipo:'Equipo',
     q2_main:'Servicio principal',chips_servicios:'Otros servicios',chips_precio:'Precio promedio',
     q3_diff:'Diferenciador',chips_resultado:'Resultado para clientes',
     r_expediciones:'Expediciones/mes',r_personas:'Personas/evento',chips_canal:'Canal principal',chips_dms:'DMs/semana',
@@ -581,7 +571,7 @@ function submitForm(){
 
 // Chips — multi-select
 document.querySelectorAll('.chips').forEach(group=>{
-  const isMulti = ['chips_servicios','chips_resultado','chips_metas','chips_digital','chips_marca'].includes(group.id);
+  const isMulti = ['chips_servicios','chips_resultado','chips_metas','chips_digital'].includes(group.id);
   group.querySelectorAll('.chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
       if(isMulti){
