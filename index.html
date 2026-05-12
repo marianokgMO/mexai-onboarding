@@ -6,7 +6,7 @@
 <title>MexAI — Onboarding: Hector</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   :root{
@@ -21,7 +21,7 @@
   .header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
   .logo-img{height:32px;filter:brightness(1.1);}
   .progress-wrap{display:flex;align-items:center;gap:10px;}
-  .progress-text{font-size:13px;color:var(--muted);font-family:'Syne',sans-serif;}
+  .progress-text{font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;}
   .progress-bar{width:180px;height:3px;background:var(--border2);border-radius:2px;overflow:hidden;}
   .progress-fill{height:100%;background:var(--blue);border-radius:2px;transition:width 0.4s ease;}
 
@@ -35,8 +35,8 @@
   
   /* HERO */
   .step-hero{text-align:center;padding:40px 0 48px;}
-  .step-num{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:block;}
-  .step-title{font-family:'Syne',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;color:#fff;margin-bottom:12px;}
+  .step-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:block;}
+  .step-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;color:#fff;margin-bottom:12px;}
   .step-title span{color:var(--blue);}
   .step-subtitle{font-size:16px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto;}
   .mentor-tip{background:var(--surface2);border:1px solid var(--border2);border-left:3px solid var(--blue);border-radius:var(--radius-sm);padding:14px 16px;margin-top:28px;font-size:14px;color:var(--muted);line-height:1.6;text-align:left;}
@@ -61,27 +61,27 @@
   /* RANGE */
   .range-wrap{display:flex;align-items:center;gap:12px;}
   input[type=range]{flex:1;accent-color:var(--blue);}
-  .range-val{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--blue);min-width:40px;text-align:right;}
+  .range-val{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:var(--blue);min-width:40px;text-align:right;}
 
   /* NAV BUTTONS */
   .nav{display:flex;gap:12px;margin-top:32px;}
   .btn-back{flex:0 0 auto;padding:12px 24px;background:transparent;border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--muted);font-size:14px;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;}
   .btn-back:hover{border-color:var(--text);color:var(--text);}
-  .btn-next{flex:1;padding:14px 28px;background:var(--blue);border:none;border-radius:var(--radius-sm);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.15s;font-family:'Syne',sans-serif;letter-spacing:0.3px;}
+  .btn-next{flex:1;padding:14px 28px;background:var(--blue);border:none;border-radius:var(--radius-sm);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.15s;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:0.3px;}
   .btn-next:hover{background:var(--blue-dark);}
   .btn-next:disabled{opacity:0.4;cursor:not-allowed;}
 
   /* SUMMARY */
   .summary-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px;}
-  .summary-block h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+  .summary-block h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
   .summary-block p{font-size:14px;color:var(--text);line-height:1.6;}
 
   /* FINAL */
   .final-cta{text-align:center;padding:48px 0;}
   .final-icon{width:72px;height:72px;background:var(--blue);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:32px;}
-  .final-title{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#fff;margin-bottom:12px;}
+  .final-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:#fff;margin-bottom:12px;}
   .final-sub{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.6;}
-  .btn-final{display:inline-block;padding:16px 36px;background:var(--blue);border:none;border-radius:var(--radius-sm);color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:background 0.15s;}
+  .btn-final{display:inline-block;padding:16px 36px;background:var(--blue);border:none;border-radius:var(--radius-sm);color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background 0.15s;}
   .btn-final:hover{background:var(--blue-dark);}
 
   /* STEP DOTS */
